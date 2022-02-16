@@ -43,12 +43,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div>
-      <nav className="">
-        <div className="">
+      <nav className="bg-white">
+        <div className="flex border-b  px-2 py-3">
           <Link href="/">
             <a>
               <img
-                src='/logo.svg'
+                src='/icon.svg'
                 alt="React Logo"
                 style={{ width: '50px' }}
               />
@@ -56,35 +56,34 @@ function MyApp({ Component, pageProps }) {
           </Link>
           <Link href="/">
             <a>
-              <div className="">
-                <h2 className="">Full Stack</h2>
-                <p className="">WEB3</p>
+              <div className="flex flex-col pl-2 ">
+                <h2 className="ml-3 m-0 font-medium">Full Stack</h2>
+                <p className="m-0 ml-3 text-[#4d4b4b]">WEB3</p>
               </div>
             </a>
           </Link>
           {
             !account && (
-              <div className="">
-                <button className="" onClick={connect}>Connect</button>
+              <div className="flex flex-1 justify-end w-screen">
+                <button className="bg-[#fafafa] outline-none border-none text-base px-4 py-3 cursor-pointer rounded-md  shadow " onClick={connect}>Connect</button>
               </div>
             )
           }
           {
-            account && <p className="">{account}</p>
+            account && <p className="w-screen flex flex-1 justify-end text-lg">{account}</p>
           }
         </div>
-        <div className="">
+        <div className=" px-2 py-4 bg-[#fafafa]">
           <Link href="/" >
-            <a className="">
+            <a className=" text-lg font-medium ml-2">
               Home
             </a>
           </Link>
           {
-            /* if the signed in user is the contract owner, we */
-            /* show the nav link to create a new post */
+            
             (account === ownerAddress) && (
               <Link href="/create-post">
-                <a className="">
+                <a className="text-lg font-medium ml-2">
                   Create Post
                 </a>
               </Link>
@@ -92,7 +91,7 @@ function MyApp({ Component, pageProps }) {
           }
         </div>
       </nav>
-      <div className="">
+      <div className="p-7">
         <AccountContext.Provider value={account}>
           <Component {...pageProps} connect={connect} />
         </AccountContext.Provider>
